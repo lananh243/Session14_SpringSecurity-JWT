@@ -8,4 +8,6 @@ import com.ra.ss14.model.entity.User;
 public interface UserService {
     User register(UserRegister userRegister);
     JWTResponse login(UserLogin userLogin);
+    User findByUsername(String username);
+    boolean loginAndSendOTP(UserLogin userLogin);
 }

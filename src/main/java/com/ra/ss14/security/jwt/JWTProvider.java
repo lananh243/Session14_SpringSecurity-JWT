@@ -35,8 +35,8 @@ public class JWTProvider {
     public boolean validateToken(String token){
         try{
             if (tokenBlackListService.isBlackListed(token)){
-                log.error("JWT token is blacklisted!");
-                return false;
+                log.warn("Token bị thu hồi (blacklist)");
+                throw new RuntimeException("Token không hợp lệ");
             }
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;

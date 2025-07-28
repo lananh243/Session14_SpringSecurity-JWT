@@ -18,6 +18,7 @@ public class RefreshTokenServiceImp implements RefreshTokenService {
 
     @Override
     public RefreshToken createRefreshToken(User user, String ip) {
+        deleteByUser(user);
         RefreshToken token = RefreshToken.builder()
                 .user(user)
                 .addressIp(ip)
